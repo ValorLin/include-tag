@@ -13,6 +13,7 @@ gulp.task('browser', function () {
         .pipe(wrapJs('(function(window){%= body %})(window)'))
         .pipe(gulp.dest('./dist/'));
 });
+
 gulp.task('node', function () {
     return gulp.src([
             './libs/node/path.js',
