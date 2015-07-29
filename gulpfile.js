@@ -21,3 +21,5 @@ gulp.task('node', function () {
         .pipe(concat('includeTag.js'))
         .pipe(gulp.dest('./dist/'));
 });
+
+gulp.task('default', ['node', 'browser']);
