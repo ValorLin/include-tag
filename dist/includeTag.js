@@ -16,3 +16,4 @@ function includeTag(cwd, contents) {
         }
     });
 }
+module.exports = includeTag;
