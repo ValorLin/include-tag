@@ -1,6 +1,6 @@
 # include-tag
 How to deal with the common header and footer in your batch of html files?
-It was a question, but now use the &lt;include> tag in html file, it wasn't a question anymore.
+It used to be a question, but use the &lt;include> tag in html file, it wasn't a question anymore.
 # How to use
 ## Develop
 Use includeTag.browser.js for develop
@@ -43,5 +43,5 @@ Run it, And you would got a compiled html file like this.↓
 
 All done, enjoy it dude.
 
-# Why <include> tag
+# Why &lt;include> tag
 It is the most natural thing in html file, so, why not?
