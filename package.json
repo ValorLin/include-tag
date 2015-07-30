@@ -1,13 +1,13 @@
 {
   "name": "include-tag",
   "version": "1.0.0",
-  "description": "",
+  "description": "Use the <include> tag in html file.",
   "main": "dist/includeTag.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node demo/build.js"
   },
   "author": "weilao <qqq123026689@126.com> (https://github.com/weilao)",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-concat": "^2.6.0",

@@ -7,7 +7,7 @@ gulp.task('browser', function () {
             './libs/browser/path.js',
             './libs/browser/getFileContent.js',
             './libs/includeTag.js',
-           './libs/browser/export.js'
+           './libs/browser/browser.js'
         ])
         .pipe(concat('includeTag.browser.js'))
         .pipe(wrapJs('(function(window){%= body %})(window)'))
@@ -19,7 +19,7 @@ gulp.task('node', function () {
             './libs/node/path.js',
             './libs/node/getFileContent.js',
             './libs/includeTag.js',
-            './libs/node/export.js'
+            './libs/node/node.js'
         ])
         .pipe(concat('includeTag.js'))
         .pipe(gulp.dest('./dist/'));
