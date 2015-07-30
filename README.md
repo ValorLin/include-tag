@@ -4,7 +4,7 @@ It used to be a question, but use the &lt;include> tag in html file, it wasn't a
 
 ## How to use
 ### Develop
-Use includeTag.browser.js for develop
+Use includeTag.browser.js for develop. [DEMO](http://weilao.github.io/include-tag/demo/)
 ```html
 <include src="header.html"></include>
 <div>Content</div>
