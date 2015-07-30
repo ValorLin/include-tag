@@ -47,5 +47,4 @@ All done, enjoy it dude.
 It is the most natural thing in html file, so, why not?
 
 ## License
-
 MIT ? [ÍþÀÏ](http://doctype-html.com)
