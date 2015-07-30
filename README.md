@@ -13,7 +13,9 @@ Use includeTag.browser.js for develop
 ```
 
 ### Production
-Use includeTag.js to compile your original html file.
+I recommend you use [gulp-include-tag](https://github.com/weilao/gulp-include-tag) to compile your html files.
+
+However, you can write your own build script to do it too.¡ý
 ```js
 var fs = require('fs');
 var includeTag = require('../dist/includeTag');
