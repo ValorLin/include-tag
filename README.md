@@ -13,7 +13,7 @@ Use includeTag.browser.js for develop
 ```
 
 ### Production
-I recommend you use [gulp-include-tag](https://github.com/weilao/gulp-include-tag) to compile your html files.
+I recommend you to use [gulp-include-tag](https://github.com/weilao/gulp-include-tag) to compile html files.
 
 However, you can write your own build script to do it too.¡ý
 ```js
