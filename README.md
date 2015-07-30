@@ -1,8 +1,9 @@
-# include-tag
+# Include Tag
 How to deal with the common header and footer in your batch of html files?
 It used to be a question, but use the &lt;include> tag in html file, it wasn't a question anymore.
-# How to use
-## Develop
+
+## How to use
+### Develop
 Use includeTag.browser.js for develop
 ```html
 <include src="header.html"></include>
@@ -11,7 +12,7 @@ Use includeTag.browser.js for develop
 <script type="text/javascript" src="../dist/includeTag.browser.js"></script>
 ```
 
-## Production
+### Production
 Use includeTag.js to compile your original html file.
 ```js
 var fs = require('fs');
@@ -28,7 +29,7 @@ fs.writeFileSync('demo/build.html', html, {flags: 'w+'});
 ```
 
 Run it, And you would got a compiled html file like this.â†?
-### build.html
+#### build.html
 ```html
 <header>
     <ul>
@@ -43,7 +44,7 @@ Run it, And you would got a compiled html file like this.â†?
 
 All done, enjoy it dude.
 
-# Why &lt;include> tag
+## Why &lt;include> tag
 It is the most natural thing in html file, so, why not?
 
 ## License
