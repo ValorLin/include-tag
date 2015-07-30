@@ -28,7 +28,7 @@ html = html.replace(/<script.*?includeTag.browser.js.*?<\/script>/gi, '');
 fs.writeFileSync('demo/build.html', html, {flags: 'w+'});
 ```
 
-Run it, And you would got a compiled html file like this.â†?
+Run it, And you would got a compiled html file like this.
 #### build.html
 ```html
 <header>
