@@ -5,11 +5,21 @@ It used to be a question, but use the &lt;include> tag in html file, it wasn't a
 ## How to use
 ### Develop
 Use includeTag.browser.js for develop. [DEMO](http://weilao.github.io/include-tag/demo/)
+
+**index.html**
 ```html
 <include src="header.html" text="THIS IS THE TITLE"></include>
 <div>Content</div>
 <include src="footer.html"></include>
 <script type="text/javascript" src="../dist/includeTag.browser.js"></script>
+```
+
+**header.html**
+```html
+<header>
+    <h1>{{text}}</h1>
+    <include src="./menu/menu.html"></include>
+</header>
 ```
 
 ### Production
