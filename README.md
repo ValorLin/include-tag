@@ -6,7 +6,7 @@ It used to be a question, but use the &lt;include> tag in html file, it wasn't a
 ### Develop
 Use includeTag.browser.js for develop. [DEMO](http://weilao.github.io/include-tag/demo/)
 ```html
-<include src="header.html"></include>
+<include src="header.html" text="THIS IS THE TITLE"></include>
 <div>Content</div>
 <include src="footer.html"></include>
 <script type="text/javascript" src="../dist/includeTag.browser.js"></script>
@@ -34,11 +34,12 @@ Run it, And you would got a compiled html file like this.
 #### build.html
 ```html
 <header>
+	<h1>THIS IS THE TITLE</h1>
     <ul>
-    <li>Home</li>
-    <li>Article</li>
-    <li>About</li>
-</ul>
+	    <li>Home</li>
+	    <li>Article</li>
+	    <li>About</li>
+	</ul>
 </header>
 <div>Content</div>
 <footer>Footer</footer>
@@ -50,4 +51,4 @@ All done, enjoy it dude.
 It is the most natural thing in html file, so, why not?
 
 ## License
-MIT ? [Õ˛¿œ](http://doctype-html.com)
+MIT ? [Â®ÅËÄÅ](http://doctype-html.com)
