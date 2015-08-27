@@ -3,7 +3,7 @@ var RE_VARIABLE = /{{(.+?)}}/gi;
 
 function includeTag(cwd, contents) {
     return contents.replace(RE_INCLUDE_TAG, function (tag) {
-        var attributes, filePath, result;
+        var attributes, filePath, result, fileContent;
 
         attributes = parseAttributes(tag);
 
@@ -11,16 +11,20 @@ function includeTag(cwd, contents) {
 
         filePath = path.join(cwd, attributes.src);
 
-        result = getFileContent(filePath);
-        result = result.replace(RE_VARIABLE, function (_, key) {
-            return attributes[key];
-        });
+        fileContent = getFileContent(filePath);
+        result = applyVariables(fileContent, attributes);
 
         if (RE_INCLUDE_TAG.test(result)) {
             return includeTag(path.dirname(filePath), result);
         } else {
             return result;
         }
+    });
+}
+
+function applyVariables(str, attributes) {
+    return str.replace(RE_VARIABLE, function (_, key) {
+        return attributes[key];
     });
 }
 
