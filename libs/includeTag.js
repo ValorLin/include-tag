@@ -7,10 +7,10 @@ function includeTag(cwd, contents) {
 
         attributes = parseAttributes(tag);
 
+        // src is required
         if (!attributes.src) throw new Error('src is required for <include> tag');
 
         filePath = path.join(cwd, attributes.src);
-
         fileContent = getFileContent(filePath);
         result = applyVariables(fileContent, attributes);
 
