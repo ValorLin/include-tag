@@ -46,4 +46,18 @@ function applyVariables(str, attributes) {
     });
 }
 
-module.exports = includeTag;
+var RE_ATTRIBUTES = /(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/gi;
+function parseAttributes(tag) {
+    var arr, key, value, matches, attributes;
+
+    matches = tag.match(RE_ATTRIBUTES);
+    attributes = {};
+
+    matches.forEach(function (match) {
+        arr = match.split('=');
+        key = arr[0];
+        value = arr[1].replace(/^['"]|['"]$/gi, '');
+        attributes[key] = value;
+    });
+    return attributes;
+}
