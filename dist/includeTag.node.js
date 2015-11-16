@@ -44,27 +44,15 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var _includeTag = __webpack_require__(1);
+	var includeTag = __webpack_require__(1);
 
-	window.includeTag = {
-	    init: function () {
-	        var includes = document.querySelectorAll('include');
-	        includes = Array.prototype.slice.apply(includes);
-	        includes.forEach(this.exec);
-	    },
-	    exec: function (el) {
-	        var getFileContent = function (filePath) {
-	            var oReq = new XMLHttpRequest();
-	            oReq.open("get", filePath, false);
-	            oReq.send();
-	            return oReq.response;
-	        };
+	module.exports = function (cwd, contents) {
+	    var getFileContent = function (filePath) {
+	        return fs.readFileSync(filePath).toString();
+	    };
 
-	        el.outerHTML = _includeTag('.', el.outerHTML, getFileContent);
-	    }
+	    return includeTag(cwd, contents, getFileContent);
 	};
-
-	window.includeTag.init();
 
 /***/ },
 /* 1 */

@@ -1,34 +1,9 @@
+var path = require('path');
+
+var RE_ATTRIBUTES = /(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/gi;
 var RE_INCLUDE_TAG = /<include.*?><\/include>/gi;
 var RE_VARIABLE = /{{(.+?)}}/gi;
 
-function includeTag(cwd, contents) {
-    return contents.replace(RE_INCLUDE_TAG, function (tag) {
-        var attributes, filePath, result, fileContent;
-
-        attributes = parseAttributes(tag);
-
-        // src is required
-        if (!attributes.src) throw new Error('src is required for <include> tag');
-
-        filePath = path.join(cwd, attributes.src);
-        fileContent = getFileContent(filePath);
-        result = applyVariables(fileContent, attributes);
-
-        if (RE_INCLUDE_TAG.test(result)) {
-            return includeTag(path.dirname(filePath), result);
-        } else {
-            return result;
-        }
-    });
-}
-
-function applyVariables(str, attributes) {
-    return str.replace(RE_VARIABLE, function (_, key) {
-        return attributes[key];
-    });
-}
-
-var RE_ATTRIBUTES = /(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/gi;
 function parseAttributes(tag) {
     var arr, key, value, matches, attributes;
 
@@ -43,3 +18,32 @@ function parseAttributes(tag) {
     });
     return attributes;
 }
+
+function includeTag(cwd, contents, getFileContent) {
+    return contents.replace(RE_INCLUDE_TAG, function (tag) {
+        var attributes, filePath, result, fileContent;
+
+        attributes = parseAttributes(tag);
+
+        // src is required
+        if (!attributes.src) throw new Error('src is required for <include> tag');
+
+        filePath = path.join(cwd, attributes.src);
+        fileContent = getFileContent(filePath);
+        result = applyVariables(fileContent, attributes);
+
+        if (RE_INCLUDE_TAG.test(result)) {
+            return includeTag(path.dirname(filePath), result, getFileContent);
+        } else {
+            return result;
+        }
+    });
+}
+
+function applyVariables(str, attributes) {
+    return str.replace(RE_VARIABLE, function (_, key) {
+        return attributes[key];
+    });
+}
+
+module.exports = includeTag;
