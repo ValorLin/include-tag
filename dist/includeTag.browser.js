@@ -48,7 +48,7 @@
 
 	window.includeTag = {
 	    init: function () {
-	        var includes = document.querySelectorAll('include');
+	        var includes = document.getElementsByTagName('include');
 	        includes = Array.prototype.slice.apply(includes);
 	        includes.forEach(this.exec);
 	    },
@@ -93,18 +93,16 @@
 
 	function includeTag(cwd, contents, getFileContent) {
 	    return contents.replace(RE_INCLUDE_TAG, function (tag) {
-	        var attributes, filePath, result;
+	        var attributes, filePath, result, fileContent;
 
 	        attributes = parseAttributes(tag);
 
+	        // src is required
 	        if (!attributes.src) throw new Error('src is required for <include> tag');
 
 	        filePath = path.join(cwd, attributes.src);
-
-	        result = getFileContent(filePath);
-	        result = result.replace(RE_VARIABLE, function (_, key) {
-	            return attributes[key];
-	        });
+	        fileContent = getFileContent(filePath);
+	        result = applyVariables(fileContent, attributes);
 
 	        if (RE_INCLUDE_TAG.test(result)) {
 	            return includeTag(path.dirname(filePath), result, getFileContent);
@@ -114,7 +112,27 @@
 	    });
 	}
 
-	module.exports = includeTag;
+	function applyVariables(str, attributes) {
+	    return str.replace(RE_VARIABLE, function (_, key) {
+	        return attributes[key];
+	    });
+	}
+
+	var RE_ATTRIBUTES = /(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/gi;
+	function parseAttributes(tag) {
+	    var arr, key, value, matches, attributes;
+
+	    matches = tag.match(RE_ATTRIBUTES);
+	    attributes = {};
+
+	    matches.forEach(function (match) {
+	        arr = match.split('=');
+	        key = arr[0];
+	        value = arr[1].replace(/^['"]|['"]$/gi, '');
+	        attributes[key] = value;
+	    });
+	    return attributes;
+	}
 
 /***/ },
 /* 2 */
