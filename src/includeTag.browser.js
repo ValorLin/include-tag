@@ -2,7 +2,7 @@ var _includeTag = require('./includeTag');
 
 window.includeTag = {
     init: function () {
-        var includes = document.querySelectorAll('include');
+        var includes = document.getElementsByTagName('include');
         includes = Array.prototype.slice.apply(includes);
         includes.forEach(this.exec);
     },
