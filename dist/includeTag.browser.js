@@ -134,6 +134,8 @@
 	    return attributes;
 	}
 
+	module.exports = includeTag;
+
 /***/ },
 /* 2 */
 /***/ function(module, exports, __webpack_require__) {
