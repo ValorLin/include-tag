@@ -28,7 +28,7 @@ It is recommended to use [gulp-include-tag](https://github.com/weilao/gulp-inclu
 However, you can write your own build script to do it too.
 ```js
 var fs = require('fs');
-var includeTag = require('../dist/includeTag');
+var includeTag = require('includeTag');
 
 var html = fs.readFileSync(__dirname + '/index.html').toString();
 
