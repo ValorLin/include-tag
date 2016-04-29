@@ -61,4 +61,4 @@ All done, enjoy it dude.
 It is the most natural thing in html file, so, why not?
 
 ## License
-MIT ? [威老](http://doctype-html.com)
+MIT © [威老](http://doctype-html.com)
