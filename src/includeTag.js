@@ -46,7 +46,6 @@ function applyVariables(str, attributes) {
     });
 }
 
-var RE_ATTRIBUTES = /(\S+)=["']?((?:.(?!["']?\s+(?:\S+)=|[>"']))+.)["']?/gi;
 function parseAttributes(tag) {
     var arr, key, value, matches, attributes;
 
